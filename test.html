@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      color: white;
+      transition: background 0.5s ease;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .container {
+      text-align: center;
+      padding: 2.5rem 3rem;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      max-width: 480px;
+      width: 90%;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      margin-bottom: 1.5rem;
+    }
+    .palette-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .theme-btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      color: #333;
+      background: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .theme-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    button {
+      padding: 0.8rem 1.8rem;
+      font-size: 1rem;
+      color: #333;
+      background: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>絢麗漸層效果 🎨</h1>
+    <p>支援動態流動漸層，您也可以切換不同的配色主題！</p>
+
+    <div class="palette-box">
+      <button class="theme-btn" onclick="setGradient('sunset')">🌅 落日餘暉</button>
+      <button class="theme-btn" onclick="setGradient('ocean')">🌊 深海湛藍</button>
+      <button class="theme-btn" onclick="setGradient('aurora')">🌌 極光霓虹</button>
+      <button class="theme-btn" onclick="setGradient('candy')">🍬 夢幻粉彩</button>
+    </div>
+  </div>
+
+  <script>
+    const gradients = {
+      sunset: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+      ocean: 'linear-gradient(135deg, #2af598 0%, #009efd 100%)',
+      aurora: 'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)',
+      candy: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+    };
+
+    function setGradient(theme) {
+      const body = document.body;
+      if (theme === 'aurora') {
+        body.style.background = gradients.aurora;
+        body.style.backgroundSize = '400% 400%';
+        body.style.animation = 'gradientBG 12s ease infinite';
+      } else {
+        body.style.animation = 'none';
+        body.style.background = gradients[theme];
+        body.style.backgroundSize = 'cover';
+      }
+    }
+  </script>
+</body>
+</html>
